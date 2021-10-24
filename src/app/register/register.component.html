@@ -1,26 +1,41 @@
 <div class="container" style="max-width:600px">
-    <form>
+    <form #registerform='ngForm'>
         <h2 style="width:100%;text-align:center">Create account</h2>
         <div class="mb-3">
             <label class="form-label" for="email">Enter your email</label>
-            <input class="form-control" id="email" name="" type="email" placeholder="a@gmail.com">
+            <input class="form-control" id="email" name="email" [(ngModel)]="user.email" #email='ngModel' type="email" placeholder="a@gmail.com" required>
+            <div class="alert alert-danger" [hidden]="email.valid || email.pristine">
+                <p>The email is required</p>
+            </div>
         </div>
         <div class="mb-3">
             <label class="form-label" for="username">Enter your username here</label>
-            <input class="form-control" id="username" name="" type="username" placeholder="username">
+            <input class="form-control" [(ngModel)]="user.username" id="username" name="username" #username='ngModel' type="username" placeholder="username" required>
+            <div class="alert alert-danger" [hidden]="username.valid || username.pristine">
+                <p>The username is required</p>
+            </div>
         </div>
         <div class="mb-3">
             <label class="form-label" for="password1">Password</label>
-            <input class="form-control" id="password1" name="" type="password">
+            <input class="form-control" id="password1" name="password1" [(ngModel)]="user.password" #password='ngModel' type="password" required>
+            <div class="alert alert-danger" [hidden]="password.valid || password.pristine">
+                <p>The password is required</p>
+            </div>
         </div>
         <div class="mb-3">
             <label class="form-label" for="password2">Confirm password</label>
-            <input class="form-control" id="password2" name="" type="password">
+            <input class="form-control" id="password2" name="password2" [(ngModel)]="user.confirmPassword" #password2='ngModel' type="password" required>
+            <div class="alert alert-danger" [hidden]="password2.valid || password2.pristine">
+                <p>The password is required</p>
+            </div>
         </div>
         <div class="mb-3">
             <label for="formFile" class="form-label">Default file input example</label>
-            <input class="form-control" type="file" id="formFile">
+            <input class="form-control" type="file" name="image" [(ngModel)]="user.image" #image='ngModel' required id="formFile">
+            <div class="alert alert-danger" [hidden]="image.valid || image.pristine">
+                <p>The profile pic is required</p>
+            </div>
         </div>
-        <button class="btn btn-outline-secondary btn-lg">Create</button>
+        <button class="btn btn-outline-secondary btn-lg" type="submit">Create</button>
     </form>
 </div>
