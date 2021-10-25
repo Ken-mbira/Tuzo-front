@@ -24,10 +24,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label" for="password2">Confirm password</label>
-            <input class="form-control" id="password2" name="password2" [(ngModel)]="password2" #password2='ngModel' type="password" required>
-            <div class="alert alert-danger" [hidden]="password2.valid || password2.pristine">
-                <p>The password is required</p>
-            </div>
+            <input class="form-control" id="password2" name="password2" [(ngModel)]="password2" type="password" required>
         </div>
         <div class="mb-3">
             <label for="formFile" class="form-label">Default file input example</label>
