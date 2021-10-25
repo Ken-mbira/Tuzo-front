@@ -11,6 +11,10 @@ import { AuthServiceService } from '../account-service/auth-service.service';
 export class NavbarComponent implements OnInit {
   isAuthenticated:boolean = false;
 
+  logout(){
+    this.status.changeStatus(false)
+  }
+
   constructor(private accountService:AccountService,private status:AuthServiceService) { }
 
   ngOnInit(): void {
