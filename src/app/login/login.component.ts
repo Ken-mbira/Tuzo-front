@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account-service/account.service'
 import { AuthServiceService } from '../account-service/auth-service.service';
+import { Router } from '@angular/router';
 
 import { User } from '../user';
 
@@ -30,12 +31,13 @@ export class LoginComponent implements OnInit {
       this.user.profile_pic = this.userHolder['account']['profile_pic']
       this.user.isAuthenticated = true
       this.status.newUser(this.user)
+      this.route.navigate(['dashboard'])
     },error =>{
       console.log(error.message)
       this.status.newUser(this.user)
     })
   }
-  constructor(private accountService : AccountService,private status : AuthServiceService) { }
+  constructor(private accountService : AccountService,private status : AuthServiceService,private route:Router) { }
 
   ngOnInit(): void {
     this.status.currentUser.subscribe(user => this.user = user)
