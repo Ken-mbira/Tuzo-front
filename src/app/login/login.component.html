@@ -1,4 +1,4 @@
-<div class="container" style="padding:10px">
+<div class="container" style="padding:10px;max-width:600px">
     <form #loginForm='ngForm' (ngSubmit)="login()">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -16,5 +16,5 @@
         <button type="submit" class="btn btn-outline-primary">Submit</button>
     </form>
     <hr>
-    <p>Don't have an account?<span style="color:blue;text-decoration: underline;"> register</span></p>
+    <p>Don't have an account?<span style="color:blue;text-decoration: underline;" routerLink="register"> register</span></p>
 </div>
