@@ -20,5 +20,16 @@ export class AccountService {
     return data
   }
 
+  loginUser(user:any){
+    let data: any;
+    this.http.post(`${environment.TUZO_BASE_URL}account/login`,user).subscribe(response =>{
+      data = response
+      this.token = data['token']
+      console.log(this.token)
+    },error => {
+      console.log(error)
+    })
+  }
+
   constructor(private http:HttpClient) { }
 }
