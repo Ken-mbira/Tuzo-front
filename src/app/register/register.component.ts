@@ -14,8 +14,18 @@ export class RegisterComponent implements OnInit {
   user = new User("","","","","")
   userResponse:any;
 
+  onImageChanged(event: any){
+    this.user.profile_pic = event.target.files[0]
+  }
+
   register(){
-    this.accountService.registerUser(this.user)
+    const upload = new FormData()
+    upload.append('email',this.user.email)
+    upload.append('username',this.user.username)
+    upload.append('password',this.user.password)
+    upload.append('password2',this.user.password2)
+    upload.append('profile_pic',this.user.profile_pic,this.user.profile_pic.name)
+    this.accountService.registerUser(upload)
   }
 
   constructor(private accountService:AccountService) { }
