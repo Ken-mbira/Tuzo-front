@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../account-service/account.service';
+import { Router } from '@angular/router';
 
 import { User } from '../user';
 import { environment } from '../../environments/environment';
@@ -26,9 +27,10 @@ export class RegisterComponent implements OnInit {
     upload.append('password2',this.user.password2)
     upload.append('profile_pic',this.user.profile_pic,this.user.profile_pic.name)
     this.accountService.registerUser(upload)
+    this.route.navigate([''])
   }
 
-  constructor(private accountService:AccountService) { }
+  constructor(private accountService:AccountService, private route:Router) { }
 
   ngOnInit(): void {
   }
