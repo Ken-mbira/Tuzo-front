@@ -12,7 +12,8 @@ import { environment } from '../../environments/environment';
 })
 export class RegisterComponent implements OnInit {
 
-  user = new User("","","","","")
+  user = new User("","","","")
+  password2:string = ""
   userResponse:any;
 
   onImageChanged(event: any){
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
     upload.append('email',this.user.email)
     upload.append('username',this.user.username)
     upload.append('password',this.user.password)
-    upload.append('password2',this.user.password2)
+    upload.append('password2',this.password2)
     upload.append('profile_pic',this.user.profile_pic,this.user.profile_pic.name)
     this.accountService.registerUser(upload)
     this.route.navigate([''])
