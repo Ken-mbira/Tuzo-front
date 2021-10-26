@@ -15,7 +15,8 @@ export class NavbarComponent implements OnInit {
   user = new User("","","","",false)
 
   logout(){
-    this.status.newUser(this.user)
+    const emptyUser = new User("","","","",false)
+    this.status.newUser(emptyUser)
   }
 
   constructor(private accountService:AccountService,private status:AuthServiceService) { }
