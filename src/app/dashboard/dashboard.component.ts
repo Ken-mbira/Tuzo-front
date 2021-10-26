@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AccountService } from '../account-service/account.service';
 import { Project } from '../project';
 import { environment } from 'src/environments/environment';
+import { ProjectService } from '../account-service/project.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,13 +17,17 @@ export class DashboardComponent implements OnInit {
   projectHolder:any;
   cloudinaryUrl:string = environment.CLOUDINARY_URL
 
+  index: number;
+
   viewProject(index){
+    this.projectService.newIndex(index)
     this.route.navigate(['/project']);
   }
 
-  constructor(private accountService:AccountService,private route:Router) { }
+  constructor(private accountService:AccountService,private route:Router,private projectService:ProjectService) { }
 
   ngOnInit(): void {
+    this.projectService.currentIndex.subscribe(response => this.index = response)
     this.accountService.getProjects().subscribe(data => {
       this.projectHolder = data;
       for (let index = 0; index < this.projectHolder['projects'].length; index++) {

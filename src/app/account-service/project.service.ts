@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { Project } from '../project';
 
@@ -6,7 +7,14 @@ import { Project } from '../project';
   providedIn: 'root'
 })
 export class ProjectService {
-  project = new Project(0,"","",new Date(),new Date(),"","","","",[])
+  projectIndex:number = 0
+  private projectInstance = new BehaviorSubject<number>(this.projectIndex)
+
+  currentIndex = this.projectInstance.asObservable();
+
+  newIndex(index:number){
+    this.projectInstance.next(index)
+  }
 
 
   constructor() { }
