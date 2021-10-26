@@ -27,7 +27,7 @@ export class AccountService {
   }
 
   getProjects(pk:number){
-    return this.http.get(`${environment.TUZO_BASE_URL}project/${pk}`)
+    return this.http.get(`${environment.TUZO_BASE_URL}project/`)
   }
 
   constructor(private http:HttpClient) { }
