@@ -23,10 +23,10 @@ export class DashboardComponent implements OnInit {
   constructor(private accountService:AccountService,private route:Router) { }
 
   ngOnInit(): void {
-    this.accountService.getProjects(1).subscribe(data => {
+    this.accountService.getProjects().subscribe(data => {
       this.projectHolder = data;
       for (let index = 0; index < this.projectHolder['projects'].length; index++) {
-        let project = new Project(this.projectHolder['projects'][index]['id'],this.projectHolder['projects'][index]['owner']['username'],this.projectHolder['projects'][index]['name'],new Date(this.projectHolder['projects'][index]['date_added']),new Date(this.projectHolder['projects'][index]['date_created']),this.projectHolder['projects'][index]['description'],this.projectHolder['projects'][index]['repo_link'],this.projectHolder['projects'][index]['live_link'],this.projectHolder['projects'][index]['image'])
+        let project = new Project(this.projectHolder['projects'][index]['id'],this.projectHolder['projects'][index]['owner']['username'],this.projectHolder['projects'][index]['name'],new Date(this.projectHolder['projects'][index]['date_added']),new Date(this.projectHolder['projects'][index]['date_created']),this.projectHolder['projects'][index]['description'],this.projectHolder['projects'][index]['repo_link'],this.projectHolder['projects'][index]['live_link'],this.projectHolder['projects'][index]['image'],this.projectHolder['projects'][index]['votes'])
         this.projects.push(project);
       }
     })

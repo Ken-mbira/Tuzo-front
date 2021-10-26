@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../account-service/account.service';
+
+import { Project } from '../project';
 
 @Component({
   selector: 'app-project',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectComponent implements OnInit {
 
-  constructor() { }
+  project = new Project(0,"","",new Date(),new Date(),"","","","",[])
+
+  constructor(private accountService:AccountService) { }
 
   ngOnInit(): void {
+    this.accountService.singleProject(this.project.index).subscribe(response => {
+      console.log(response)
+    })
   }
 
 }
