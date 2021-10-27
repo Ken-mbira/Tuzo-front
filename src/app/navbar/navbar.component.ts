@@ -12,10 +12,10 @@ import { User } from '../user';
 })
 export class NavbarComponent implements OnInit {
 
-  user = new User("","","","",false)
+  user = new User("","","","",false,"")
 
   logout(){
-    const emptyUser = new User("","","","",false)
+    const emptyUser = new User("","","","",false,"")
     this.status.newUser(emptyUser)
   }
 

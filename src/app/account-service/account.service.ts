@@ -9,6 +9,8 @@ import { environment } from './../../environments/environment';
 export class AccountService {
   token: string = "";
   isAuthenticated:boolean = false;
+  headers= new HttpHeaders()
+  .set('Authorization', this.token);
 
   registerUser(user:any){
     let data:any;
@@ -32,6 +34,10 @@ export class AccountService {
 
   singleProject(index:number){
     return this.http.get(`${environment.TUZO_BASE_URL}project/${index}`)
+  }
+
+  createProject(project:any){
+    return this.http.post(`${environment.TUZO_BASE_URL}project/`,project,{ 'headers': this.headers })
   }
 
   constructor(private http:HttpClient) { }

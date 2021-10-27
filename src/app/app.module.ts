@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectComponent } from './project/project.component';
 import { VoteComponent } from './vote/vote.component';
+import { NewProjectComponent } from './new-project/new-project.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { VoteComponent } from './vote/vote.component';
     NavbarComponent,
     DashboardComponent,
     ProjectComponent,
-    VoteComponent
+    VoteComponent,
+    NewProjectComponent
   ],
   imports: [
     BrowserModule,

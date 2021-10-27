@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   email:string = "";
   password:string = "";
-  user = new User("","","","",false)
+  user = new User("","","","",false,"")
   userHolder:any;
 
   isAuthenticated:boolean = false;
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
       this.user.email = this.userHolder['account']['email']
       this.user.profile_pic = this.userHolder['account']['profile_pic']
       this.user.isAuthenticated = true
+      this.user.authToken = this.userHolder['token']
       this.status.newUser(this.user)
       this.route.navigate(['dashboard'])
     },error =>{

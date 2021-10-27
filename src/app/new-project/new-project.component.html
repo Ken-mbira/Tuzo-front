@@ -1,0 +1,30 @@
+<div class="container" style="display:flex;justify-content:center">
+    <form #projectForm='ngForm' (ngSubmit)="newProject()" style="width:600px;">
+        <h2>Create a new project</h2>
+        <div class="mb-3 mt-2">
+            <label for="name" class="form-label">Project name</label>
+            <input type="text" id="name" class="form-control" [(ngModel)]="project.name" name="name">
+        </div>
+        <div class="mb-3 mt-2">
+            <label for="description" class="form-label">Project description</label>
+            <textarea id="description" class="form-control" [(ngModel)]="project.description" name="description"></textarea>
+        </div>
+        <div class="mb-3 mt-2">
+            <label for="created" class="form-label">Date created</label>
+            <input type="date" id="created" class="form-control" [(ngModel)]="project.dateCreated" name="date">
+        </div>
+        <div class="mb-3 mt-2">
+            <label for="repo" class="form-label">Repository link</label>
+            <input type="text" id="repo" class="form-control" [(ngModel)]="project.repoLink" name="repo">
+        </div>
+        <div class="mb-3 mt-2">
+            <label for="live" class="form-label">Project live link</label>
+            <input type="text" id="live" class="form-control" [(ngModel)]="project.liveLink" name="live">
+        </div>
+        <div class="mb-3 mt-2">
+            <label for="" class="form-label">Sample image</label>
+            <input type="file" class="form-control" id="customFile" (change)="onImageChanged($event)" name="image" />
+        </div>
+        <button class="btn btn-outline-secondary">Submit</button>
+    </form>
+</div>
