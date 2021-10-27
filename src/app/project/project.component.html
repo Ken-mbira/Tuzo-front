@@ -1,1 +1,57 @@
-<p>project works!</p>
+<div class="container" style="text-align:center">
+    <figure class="figure">
+        <img src="{{cloudinaryLink}}{{project.image}}" class="figure-img img-fluid rounded" width="600px" alt="...">
+        <figcaption class="figure-caption">{{project.dateCreated}}</figcaption>
+    </figure>
+    <div>
+        <p>{{project.description}}</p>
+    </div>
+    <div style="text-align:left;">
+        <h3><u>Visit project</u></h3>
+        <div class="m-3">
+            <p>View repo on github:
+                <a href="{{project.repoLink}}" class="link-info">{{project.repoLink}}</a>
+            </p>
+        </div>
+        <div class="m-3">
+            <p>View live link:
+                <a href="{{project.liveLink}}" class="link-info">{{project.liveLink}}</a>
+            </p>
+        </div>
+    </div>
+    <h2>Vote</h2>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">Add vote</button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <app-vote [project]="project"></app-vote>
+            </div>
+        </div>
+    </div>
+    <div *ngFor="let vote of project.votes" style="border:solid black 0.5px;border-radius: 10px;padding: 10px;text-align: left">
+        <div class="card mb-2" style="padding:10px">
+            <div class="card-header">
+                <p>Design</p>
+            </div>
+            <p>Vote: {{vote['design_vote']}}/10</p>
+            <p>Comment: {{vote['design_comment']}}</p>
+        </div>
+        <div class="card mb-2" style="padding:10px">
+            <div class="card-header">
+                <p>Usability</p>
+            </div>
+            <p>Vote: {{vote['usability_vote']}}/10</p>
+            <p>Comment: {{vote['usability_comment']}}</p>
+        </div>
+        <div class="card mb-2" style="padding:10px">
+            <div class="card-header">
+                <p>Content</p>
+            </div>
+            <p>Vote: {{vote['content_vote']}}/10</p>
+            <p>Comment: {{vote['content_comment']}}</p>
+        </div>
+        <small>Vote by {{vote['owner']['username']}}.</small>
+    </div>
+</div>

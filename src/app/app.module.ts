@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectComponent } from './project/project.component';
+import { VoteComponent } from './vote/vote.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProjectComponent } from './project/project.component';
     LoginComponent,
     NavbarComponent,
     DashboardComponent,
-    ProjectComponent
+    ProjectComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,
