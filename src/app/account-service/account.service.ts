@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http'
 
 import { environment } from './../../environments/environment';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +15,7 @@ export class AccountService {
   registerUser(user:any){
     let data:any;
     this.http.post(`${environment.TUZO_BASE_URL}account/register`,user).subscribe(response => {
-      data = response
-      this.token = data['token']
-      this.isAuthenticated = true;
+      this.route.navigate([''])
     },error=>{
       console.log(error)
     })
@@ -37,10 +37,22 @@ export class AccountService {
   createProject(project:any,token){
 
     let headers = new HttpHeaders({
-      'Authorization':`Token ${token}`
+      'Authorization':`Token ${sessionStorage.getItem('token')}`
     })
     return this.http.post(`${environment.TUZO_BASE_URL}project/`,project,{'headers':headers})
   }
 
-  constructor(private http:HttpClient) { }
+  newVote(vote:any,pk){
+
+    let headers = new HttpHeaders({
+      'Authorization':`Token ${sessionStorage.getItem('token')}`
+    })
+    return this.http.post(`${environment.TUZO_BASE_URL}project/vote/${pk}`,vote,{'headers':headers}).subscribe(response => {
+      console.log(response)
+    },error => {
+      console.log(error)
+    })
+  }
+
+  constructor(private http:HttpClient,private route:Router) { }
 }

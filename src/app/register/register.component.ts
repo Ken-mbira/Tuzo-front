@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit {
     upload.append('password2',this.password2)
     upload.append('profile_pic',this.user.profile_pic,this.user.profile_pic.name)
     this.accountService.registerUser(upload)
-    this.route.navigate([''])
   }
 
   constructor(private accountService:AccountService, private route:Router) { }
