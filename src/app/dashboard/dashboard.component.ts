@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
 
   viewProject(index){
     this.projectService.newIndex(index)
+    sessionStorage.setItem('index',index)
     this.route.navigate(['/project']);
   }
 

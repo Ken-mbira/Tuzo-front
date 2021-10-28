@@ -23,7 +23,7 @@ export class ProjectComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectService.currentIndex.subscribe(response => this.index = response)
-    this.accountService.singleProject(this.index).subscribe(response => {
+    this.accountService.singleProject(parseInt(sessionStorage.getItem('index'))).subscribe(response => {
       this.projectHolder = response
       this.project.index = this.projectHolder['response']['id']
       this.project.name = this.projectHolder['response']['name']

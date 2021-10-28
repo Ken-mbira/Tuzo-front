@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
     const emptyUser = new User("","","","")
     this.status.newUser(emptyUser)
     this.accountService.logoutUser();
+    this.ngOnInit();
   }
 
   constructor(private accountService:AccountService,private status:AuthServiceService,private route:Router) { }

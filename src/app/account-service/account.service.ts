@@ -24,8 +24,8 @@ export class AccountService {
 
   loginUser(user:any){
     this.http.post(`${environment.TUZO_BASE_URL}account/login`,user).subscribe(response => {
-      this.route.navigate(['/dashboard'])
       sessionStorage.setItem('token',response['token'])
+      this.route.navigate(['/dashboard'])
     },error => {
       console.log(error)
     })
