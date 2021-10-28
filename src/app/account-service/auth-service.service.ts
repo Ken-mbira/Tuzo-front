@@ -16,5 +16,15 @@ export class AuthServiceService {
     this.userInstance.next(user)
   }
 
+  isAuthenticated(){
+    const token = sessionStorage.getItem('token')
+    if(token){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+
   constructor() { }
 }

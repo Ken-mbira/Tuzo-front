@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
       this.user.profile_pic = this.userHolder['account']['profile_pic']
       this.user.isAuthenticated = true
       this.user.authToken = this.userHolder['token']
+      sessionStorage.setItem('token',this.userHolder['token'])
       this.status.newUser(this.user)
       this.route.navigate(['dashboard'])
     },error =>{
