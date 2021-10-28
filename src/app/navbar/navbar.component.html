@@ -9,20 +9,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Home</a>
                 </li>
-                <li class="nav-item" *ngIf="!user.isAuthenticated">
+                <li class="nav-item" *ngIf="!isAuthenticated">
                     <a class="nav-link" href="#" routerLink="register">Signup</a>
                 </li>
-                <li class="nav-item" *ngIf="!user.isAuthenticated">
+                <li class="nav-item" *ngIf="!isAuthenticated">
                     <a class="nav-link" href="#" routerLink="">Log in</a>
                 </li>
-                <li class="nav-item" *ngIf="user.isAuthenticated">
-                    <a class="nav-link" href="#" routerLink="register" (click)="logout()">Logout</a>
+                <li class="nav-item" *ngIf="isAuthenticated">
+                    <a class="nav-link" href="#" routerLink="" (click)="logout()">Logout</a>
                 </li>
-                <li class="nav-item" *ngIf="user.isAuthenticated">
+                <li class="nav-item" *ngIf="isAuthenticated">
                     <a class="nav-link" href="#" routerLink="new-project">Add project</a>
                 </li>
             </ul>
-            <form class="d-flex" *ngIf="user.isAuthenticated">
+            <form class="d-flex" *ngIf="isAuthenticated">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
             </form>

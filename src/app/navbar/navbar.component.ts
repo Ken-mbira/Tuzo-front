@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AccountService } from '../account-service/account.service';
 import { AuthServiceService } from '../account-service/auth-service.service';
+import { Router } from '@angular/router'
 
 import { User } from '../user';
 
@@ -12,17 +13,20 @@ import { User } from '../user';
 })
 export class NavbarComponent implements OnInit {
 
-  user = new User("","","","",false,"")
+  user = new User("","","","")
+  isAuthenticated:boolean;
 
   logout(){
-    const emptyUser = new User("","","","",false,"")
+    const emptyUser = new User("","","","")
     this.status.newUser(emptyUser)
+    this.accountService.logoutUser();
   }
 
-  constructor(private accountService:AccountService,private status:AuthServiceService) { }
+  constructor(private accountService:AccountService,private status:AuthServiceService,private route:Router) { }
 
   ngOnInit(): void {
     this.status.currentUser.subscribe(user => this.user = user)
+    this.isAuthenticated = this.status.isAuthenticated();
   }
 
 }

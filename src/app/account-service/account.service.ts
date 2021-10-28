@@ -15,7 +15,7 @@ export class AccountService {
   registerUser(user:any){
     let data:any;
     this.http.post(`${environment.TUZO_BASE_URL}account/register`,user).subscribe(response => {
-      this.route.navigate([''])
+      this.route.navigate(['/'])
     },error=>{
       console.log(error)
     })
@@ -23,7 +23,16 @@ export class AccountService {
   }
 
   loginUser(user:any){
-    return this.http.post(`${environment.TUZO_BASE_URL}account/login`,user)
+    this.http.post(`${environment.TUZO_BASE_URL}account/login`,user).subscribe(response => {
+      this.route.navigate(['/dashboard'])
+      sessionStorage.setItem('token',response['token'])
+    },error => {
+      console.log(error)
+    })
+  }
+
+  logoutUser(){
+    sessionStorage.removeItem('token')
   }
 
   getProjects(){
@@ -34,7 +43,7 @@ export class AccountService {
     return this.http.get(`${environment.TUZO_BASE_URL}project/${index}`)
   }
 
-  createProject(project:any,token){
+  createProject(project:any){
 
     let headers = new HttpHeaders({
       'Authorization':`Token ${sessionStorage.getItem('token')}`

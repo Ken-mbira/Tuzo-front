@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment';
 })
 export class RegisterComponent implements OnInit {
 
-  user = new User("","","","",false,"")
+  user = new User("","","","")
   password2:string = ""
   userResponse:any;
 

@@ -13,7 +13,7 @@ import { AuthServiceService } from '../account-service/auth-service.service';
 export class NewProjectComponent implements OnInit {
 
   project = new Project(0,"","",new Date(),new Date(),"","","","",[])
-  user = new User("","","","",false,"")
+  user = new User("","","","")
 
   onImageChange(event: any){
     this.project.image = event.target.files[0]
@@ -27,7 +27,7 @@ export class NewProjectComponent implements OnInit {
     projectData.append('repo_link',this.project.repoLink)
     projectData.append('live_link',this.project.liveLink)
     projectData.append('image',this.project.image,this.project.image.name)
-    this.accountService.createProject(projectData,this.user.authToken).subscribe(response => {
+    this.accountService.createProject(projectData).subscribe(response => {
       console.log(response)
     },error =>{
       console.log(error)

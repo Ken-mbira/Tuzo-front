@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   email:string = "";
   password:string = "";
-  user = new User("","","","",false,"")
+  user = new User("","","","")
   userHolder:any;
 
   isAuthenticated:boolean = false;
@@ -24,25 +24,13 @@ export class LoginComponent implements OnInit {
     const upload = new FormData()
     upload.append('email',this.email)
     upload.append('password',this.password)
-    this.accountService.loginUser(upload).subscribe(user => {
-      this.userHolder = user
-      this.user.username = this.userHolder['account']['username']
-      this.user.email = this.userHolder['account']['email']
-      this.user.profile_pic = this.userHolder['account']['profile_pic']
-      this.user.isAuthenticated = true
-      this.user.authToken = this.userHolder['token']
-      sessionStorage.setItem('token',this.userHolder['token'])
-      this.status.newUser(this.user)
-      this.route.navigate(['dashboard'])
-    },error =>{
-      console.log(error.message)
-      this.status.newUser(this.user)
-    })
+    this.accountService.loginUser(upload)
   }
   constructor(private accountService : AccountService,private status : AuthServiceService,private route:Router) { }
 
   ngOnInit(): void {
     this.status.currentUser.subscribe(user => this.user = user)
+    this.isAuthenticated = this.status.isAuthenticated();
   }
 
 }

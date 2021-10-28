@@ -7,7 +7,7 @@ import { User } from '../user';
   providedIn: 'root'
 })
 export class AuthServiceService {
-  user = new User("","","","",false,"")
+  user = new User("","","","")
   private userInstance = new BehaviorSubject<User>(this.user)
 
   currentUser = this.userInstance.asObservable();
