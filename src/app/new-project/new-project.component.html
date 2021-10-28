@@ -1,5 +1,5 @@
 <div class="container" style="display:flex;justify-content:center">
-    <form #projectForm='ngForm' (ngSubmit)="newProject()" style="width:600px;">
+    <form #projectForm='ngForm' (ngSubmit)="newProject()" style="width:600px;" enctype="multipart/form-data">
         <h2>Create a new project</h2>
         <div class="mb-3 mt-2">
             <label for="name" class="form-label">Project name</label>
@@ -23,7 +23,7 @@
         </div>
         <div class="mb-3 mt-2">
             <label for="" class="form-label">Sample image</label>
-            <input type="file" class="form-control" id="customFile" (change)="onImageChanged($event)" name="image" />
+            <input type="file" class="form-control" id="formFile" (change)="onImageChange($event)" name="image" required>
         </div>
         <button class="btn btn-outline-secondary">Submit</button>
     </form>

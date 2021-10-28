@@ -25,8 +25,6 @@ export class ProjectComponent implements OnInit {
     this.projectService.currentIndex.subscribe(response => this.index = response)
     this.accountService.singleProject(this.index).subscribe(response => {
       this.projectHolder = response
-      console.log(this.projectHolder['response'])
-
       this.project.index = this.projectHolder['response']['id']
       this.project.name = this.projectHolder['response']['name']
       this.project.owner = this.projectHolder['response']['owner']['username']
@@ -37,7 +35,6 @@ export class ProjectComponent implements OnInit {
       this.project.liveLink = this.projectHolder['response']['live_link']
       this.project.image = this.projectHolder['response']['image']
       this.project.votes = this.projectHolder['response']['votes']
-      console.log(this.project)
     })
   }
 
