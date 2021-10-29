@@ -12,6 +12,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectComponent } from './project/project.component';
 import { VoteComponent } from './vote/vote.component';
 import { NewProjectComponent } from './new-project/new-project.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,15 @@ import { NewProjectComponent } from './new-project/new-project.component';
     DashboardComponent,
     ProjectComponent,
     VoteComponent,
-    NewProjectComponent
+    NewProjectComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

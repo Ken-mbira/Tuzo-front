@@ -14,7 +14,7 @@ import { User } from '../user';
 export class NavbarComponent implements OnInit {
 
   user = new User("","","","")
-  isAuthenticated:boolean;
+  isAuthenticated:boolean = this.status.isAuthenticated(); 
 
   logout(){
     const emptyUser = new User("","","","")

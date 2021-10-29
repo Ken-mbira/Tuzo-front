@@ -3,6 +3,8 @@ import { HttpClient,HttpHeaders } from '@angular/common/http'
 
 import { environment } from './../../environments/environment';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 
 @Injectable({
@@ -16,8 +18,9 @@ export class AccountService {
     let data:any;
     this.http.post(`${environment.TUZO_BASE_URL}account/register`,user).subscribe(response => {
       this.route.navigate(['/'])
+      this.snackBar.open("The account was created successfully!","Welcome",{duration:3000})
     },error=>{
-      console.log(error)
+      this.snackBar.open("The There was a problem creating your account!","Try again",{duration:3000})
     })
     return data
   }
@@ -26,8 +29,9 @@ export class AccountService {
     this.http.post(`${environment.TUZO_BASE_URL}account/login`,user).subscribe(response => {
       sessionStorage.setItem('token',response['token'])
       this.route.navigate(['/dashboard'])
+      this.snackBar.open("Welcome back!","Thank you",{duration:3000})
     },error => {
-      console.log(error)
+      this.snackBar.open("The account credentials were wrong!","Try again",{duration:3000})
     })
   }
 
@@ -63,5 +67,5 @@ export class AccountService {
     })
   }
 
-  constructor(private http:HttpClient,private route:Router) { }
+  constructor(private http:HttpClient,private route:Router,private snackBar:MatSnackBar) { }
 }
