@@ -25,18 +25,12 @@ export class LoginComponent implements OnInit {
     const upload = new FormData()
     upload.append('email',this.email)
     upload.append('password',this.password)
-    try {
     this.accountService.loginUser(upload)
-    }
-    finally{
-
-    }
   }
   constructor(private accountService : AccountService,private status : AuthServiceService,private route:Router) { }
 
   ngOnInit(): void {
     this.status.currentUser.subscribe(user => this.user = user)
-    this.isAuthenticated = this.status.isAuthenticated();
   }
 
 }

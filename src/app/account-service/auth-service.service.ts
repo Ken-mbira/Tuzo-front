@@ -16,14 +16,13 @@ export class AuthServiceService {
     this.userInstance.next(user)
   }
 
-  isAuthenticated(){
-    const token = sessionStorage.getItem('token')
-    if(token){
-      return true
-    }
-    else{
-      return false
-    }
+  isAuthenticated:boolean = true
+  private authStatus = new BehaviorSubject<boolean>(this.isAuthenticated)
+
+  currentStatus = this.authStatus.asObservable();
+
+  authentication(wildCard:boolean){
+    this.authStatus.next(wildCard)
   }
 
   constructor() { }

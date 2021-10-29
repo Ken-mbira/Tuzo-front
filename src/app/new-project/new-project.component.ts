@@ -14,6 +14,7 @@ export class NewProjectComponent implements OnInit {
 
   project = new Project(0,"","",new Date(),new Date(),"","","","",[])
   user = new User("","","","")
+  isAuthenticated: boolean = false;
 
   onImageChange(event: any){
     this.project.image = event.target.files[0]
@@ -27,18 +28,13 @@ export class NewProjectComponent implements OnInit {
     projectData.append('repo_link',this.project.repoLink)
     projectData.append('live_link',this.project.liveLink)
     projectData.append('image',this.project.image,this.project.image.name)
-    this.accountService.createProject(projectData).subscribe(response => {
-      console.log(response)
-    },error =>{
-      console.log(error)
-    })
+    this.accountService.createProject(projectData)
   }
 
   constructor(private accountService:AccountService,private status:AuthServiceService) { }
 
   ngOnInit(): void {
     this.status.currentUser.subscribe(user => this.user = user)
-
   }
 
 }

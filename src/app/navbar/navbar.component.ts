@@ -14,11 +14,12 @@ import { User } from '../user';
 export class NavbarComponent implements OnInit {
 
   user = new User("","","","")
-  isAuthenticated:boolean = this.status.isAuthenticated(); 
+  isAuthenticated:boolean = false;
 
   logout(){
     const emptyUser = new User("","","","")
     this.status.newUser(emptyUser)
+    this.status.authentication(false)
     this.accountService.logoutUser();
     this.ngOnInit();
   }
@@ -27,7 +28,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.status.currentUser.subscribe(user => this.user = user)
-    this.isAuthenticated = this.status.isAuthenticated();
+    this.status.currentStatus.subscribe(status => this.isAuthenticated = status)
   }
 
 }
