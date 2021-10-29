@@ -16,7 +16,7 @@ export class AuthServiceService {
     this.userInstance.next(user)
   }
 
-  isAuthenticated:boolean = true
+  isAuthenticated:boolean = false
   private authStatus = new BehaviorSubject<boolean>(this.isAuthenticated)
 
   currentStatus = this.authStatus.asObservable();
