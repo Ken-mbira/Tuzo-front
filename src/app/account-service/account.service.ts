@@ -18,7 +18,7 @@ export class AccountService {
   registerUser(user:any){
     let data:any;
     this.http.post(`${environment.TUZO_BASE_URL}account/register`,user).subscribe(response => {
-      this.route.navigate(['dashboard'])
+      this.route.navigate([''])
       this.snackBar.open("The account was created successfully!","Welcome",{duration:3000})
     },error=>{
       this.snackBar.open("The There was a problem creating your account!","Try again",{duration:3000})
